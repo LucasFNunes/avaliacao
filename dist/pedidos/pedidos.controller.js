@@ -16,13 +16,15 @@ exports.PedidosController = void 0;
 const common_1 = require("@nestjs/common");
 const pedidos_service_1 = __importDefault(require("./pedidos.service"));
 let PedidosController = class PedidosController {
-    processar(body) {
+    async processar(body) {
         try {
-            const processando = pedidos_service_1.default.processarPedidos(body.pedidos);
-            return processando;
+            const processando = await pedidos_service_1.default.processarPedidos(body.pedidos);
+            return {
+                pedidos: processando,
+            };
         }
         catch (error) {
-            return "Erro ";
+            return "Erro ao tentar fazer o calculo das caixas";
         }
     }
 };

@@ -5,13 +5,15 @@ import { Pedido } from "./interfaces/pedido.interface";
 @Controller("pedidos")
 export class PedidosController {
   @Post("processar")
-  processar(@Body() body: { pedidos: Pedido[] }) {
+  async processar(@Body() body: { pedidos: Pedido[] }) {
     try {
-      const processando = PedidosService.processarPedidos(body.pedidos);
+      const processando = await PedidosService.processarPedidos(body.pedidos);
 
-      return processando;
+      return {
+        pedidos: processando,
+      };
     } catch (error) {
-      return "Erro ";
+      return "Erro ao tentar fazer o calculo das caixas";
     }
   }
 }

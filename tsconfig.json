@@ -9,8 +9,10 @@
     "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "*.json"],
   "exclude": ["node_modules"] // Exclui a pasta node_modules
 }
